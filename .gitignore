@@ -1,0 +1,64 @@
+# Archivos auxiliares de LaTeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# latexmk
+*.dvi
+
+# BibTeX/Biber
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# makeindex
+*.xdy
+
+# Nomenclatura
+*.nlo
+*.nls
+
+# Minted
+_minted*
+*.pyg
+
+# TikZ/PGF
+*.dpth
+*.md5
+
+# Archivos temporales del editor
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Configuración de VS Code
+.vscode/
+
+# Configuración de TeXstudio
+*.synctex(busy)
+
+# PDFs generados
+# *.pdf
