@@ -1,0 +1,119 @@
+% Ayudantía 1 INF129 Introducción a la Programación
+% 2026-2 UTFSM SJ
+% Sergio Cárcamo Naranjo
+
+\documentclass[aspectratio=169, 11pt]{beamer}
+
+% Tema
+\usetheme{metropolis} 
+\usepackage{appendixnumberbeamer}
+
+% Tipografía (usar XeLaTeX o LuaLaTeX!!)
+\usepackage{fontspec}
+\setsansfont{Fira Sans}
+
+% Colores god
+\definecolor{AzulPrincipal}{HTML}{004B85}
+\definecolor{DoradoSecundario}{HTML}{FFB81C}
+\setbeamercolor{frametitle}{bg=AzulPrincipal, fg=white}
+\setbeamercolor{progress bar}{fg=DoradoSecundario, bg=AzulPrincipal}
+\setbeamercolor{alerted text}{fg=DoradoSecundario}
+
+% Paquete para código fuente (opción A: listings, opción B: minted)
+\usepackage{listings}
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{AzulPrincipal}\bfseries,
+	stringstyle=\color{DoradoSecundario},
+	commentstyle=\color{gray}\itshape,
+	showstringspaces=false,
+	frame=single,
+	rulecolor=\color{lightgray}
+}
+
+% Meta
+\title{Ayudantía 1}
+\subtitle{INF129 Introducción a la Programación}
+\author{Sergio Cárcamo Naranjo}
+\institute{DI - Universidad Técnica Federico Santa María}
+\date{\today}
+
+% Logo portada
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.png}}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{frame}{OneDrive del paralelo}
+		\begin{center}
+			\includegraphics[height=0.7\textheight]{qr.png} 
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}{Plan de hoy}
+		\setbeamertemplate{section in toc}[sections numbered]
+		\tableofcontents[hideallsubsections]
+	\end{frame}
+	
+	\section{Motivación}
+	
+	\begin{frame}[fragile]{Motivación}
+		\begin{itemize}
+			\item Quizás no será un ramo importante en sus mallas... pero si para su formación profesional.
+			\item La mejor forma de aprender es ejercitando.
+			\item Aprovechen las instancias de clase para ejercitar y resolver dudas.
+			\item Usar la IA para aprender, no para resolver!!
+		\end{itemize}
+	\end{frame}
+	
+	\section{Variables y Tipos de Datos}
+	
+	\begin{frame}{¿Qué es una variable?}
+		Piensa en una variable como una \textbf{caja con una etiqueta}.
+		\begin{itemize}
+			\item Nos permite guardar datos en la memoria del computador para usarlos, modificarlos o leerlos después.
+			\item En Python, no necesitamos declarar el tipo de variable antes de usarla.
+		\end{itemize}
+		
+		\vspace{0.5cm}
+		\begin{alertblock}{El operador de asignación ($=$)}
+			En programación, un solo signo igual (\texttt{=}) \textbf{no significa igualdad matemática}. Significa \textbf{asignación}: ``toma el valor de la derecha y guárdalo en la variable de la izquierda''.
+		\end{alertblock}
+	\end{frame}
+	
+	\begin{frame}{Tipos de datos fundamentales}
+		Dependiendo de la información que queramos guardar en la ``caja'', Python clasifica los datos en distintos tipos:
+		\begin{itemize}
+			\item \textbf{Enteros (\texttt{int}):} Números sin parte decimal (ej. \texttt{42}, \texttt{-5}).
+			\item \textbf{Flotantes (\texttt{float}):} Números con decimales (ej. \texttt{3.14}, \texttt{-0.5}). \textit{Ojo: en programación siempre se usa el punto, no la coma.}
+			\item \textbf{Cadenas de texto (\texttt{str}):} Texto plano. Siempre debe ir entre comillas dobles o simples (ej. \texttt{"Hola"}, \texttt{'A'}).
+			\item \textbf{Listas (\texttt{list}):} Una colección que nos permite guardar múltiples valores juntos en un solo lugar (ej. \texttt{[1, 2.5, "texto"]}).
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Veamos el código}
+		Así se ven estos conceptos aplicados directamente en Python:
+		
+		\begin{lstlisting}
+# Asignando distintos tipos de datos a variables
+edad = 19                   # int
+promedio = 85.5             # float
+nombre = "UTFSM"            # str
+ramos = ["Intro", "Fisica"] # list
+
+# Podemos reasignar valores facilmente
+edad = 20
+
+# Y podemos imprimir para verificar lo que guardamos
+print(nombre)
+print(ramos)
+\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[standout]
+		¿Dudas hasta aquí?
+	\end{frame}
+	
+\end{document}
