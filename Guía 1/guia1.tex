@@ -498,7 +498,7 @@
 		\item Las RPM (Revoluciones Por Minuto) del ventilador principal.
 	\end{enumerate}
 	
-	Utilizando operadores lógicos (\texttt{and}, \texttt{or}), el sistema debe imprimir:  \texttt{"¡Apagado de emergencia activado!"} si ocurre \textbf{alguna} de las siguientes situaciones:
+	Utilizando operadores lógicos (\texttt{and}, \texttt{or}), el sistema debe imprimir:  \texttt{"Apagado de emergencia activado!"} si ocurre \textbf{alguna} de las siguientes situaciones:
 	\begin{itemize}
 		\item La temperatura de la CPU supera los 90 grados \textbf{O} la temperatura de la GPU supera los 95 grados.
 		\item \textbf{Ambas} temperaturas (CPU y GPU) son mayores a 80 grados, \textbf{Y además} el ventilador está girando a menos de 1000 RPM (indicando un fallo crítico de refrigeración).
@@ -734,7 +734,7 @@
 			
 			# Agrupamos las condiciones con parentesis para asegurar que se evalúen en el orden correcto
 			if (temp_cpu > 90 or temp_gpu > 95) or (temp_cpu > 80 and temp_gpu > 80 and rpm_ventilador < 1000):
-				print("¡Apagado de emergencia activado!")
+				print("Apagado de emergencia activado!")
 			else:
 				print("Sistema estable. Temperaturas óptimas.")
 		\end{lstlisting}
