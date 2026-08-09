@@ -1,0 +1,150 @@
+\documentclass[11pt, a4paper]{article}
+
+% Paquetes
+\usepackage[top=2cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{fontspec}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Fuentes
+\babelfont{rm}{Noto Sans}
+\babelfont{sf}{Noto Sans}
+
+% Colores
+\definecolor{USMBlue}{RGB}{0, 75, 133}
+\definecolor{USMGold}{RGB}{255, 184, 28}
+\definecolor{CodeBg}{RGB}{245, 245, 245}
+
+% Configuración de código
+\lstset{
+	language=Python,
+	backgroundcolor=\color{CodeBg},
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{USMBlue}\bfseries,
+	stringstyle=\color{USMGold!80!black},
+	commentstyle=\color{gray}\itshape,
+	numbers=none,
+	frame=single,
+	rulecolor=\color{lightgray},
+	tabsize=4,
+	showspaces=false,
+	showstringspaces=false,
+	breaklines=true,
+	gobble=8
+}
+
+% Soluciones
+% (bloque bonito para las respuestas)
+\newtcolorbox{solucion}{
+	colback=USMBlue!5,
+	colframe=USMBlue!50,
+	title=\textbf{Solución Esperada},
+	boxrule=0.5pt,
+	arc=3pt
+}
+
+% =========================================================================
+
+\begin{document}
+	
+	% Header principal
+	\noindent
+	\begin{minipage}[c]{0.1\textwidth}
+		\includegraphics[width=\textwidth]{logo_usm.png}
+	\end{minipage}
+	\begin{minipage}[c]{0.8\textwidth}
+		\small
+		Universidad Técnica Federico Santa María \\
+		Departamento de Informática \\
+		INF129 - Introducción a la Programación
+	\end{minipage}
+	
+	\vspace{0.5cm}
+	
+	% Título
+	\begin{center}
+		\LARGE \textbf{Guía Complementaria Ayudantía [NÚMERO]} \\[0.2cm]
+		\normalsize [TEMA PRINCIPAL DE LA AYUDANTÍA]\\[0.4cm]
+		
+		\small
+		\today \\
+		Ayudante: Sergio Cárcamo N. - sergio.carcamon@usm.cl \\
+		Departamento de Informática UTFSM
+	\end{center}
+	
+	\noindent\rule{\textwidth}{0.8pt} % Línea horizontal
+	\vspace{0.5cm}
+	
+	% ==========================================
+	% Resumen
+	% ==========================================
+	\section{Resumen de la materia}
+	
+	% --- EJEMPLO DE SUBSECCIÓN DE RESUMEN ---
+	\subsection{[Nombre del concepto o materia]}
+	[Texto explicativo del concepto. Podemos usar formato como \textbf{negritas}, \textit{cursivas} o \texttt{código en línea}].
+	
+	\begin{lstlisting}
+		# Aquí va el código de ejemplo
+		variable = "Karina"
+	\end{lstlisting}
+	
+	\newpage
+	
+	% ==========================================
+	% Ejercicios
+	% ==========================================
+	\section{Ejercicios Propuestos}
+	
+	% --- EJEMPLO DE ENUNCIADO ---
+	\subsection*{Ejercicio 1: [Título del Ejercicio]}
+	[Descripción del problema que el estudiante debe resolver]. \\
+	
+	\textbf{Ejemplo:} Si el usuario ingresa \texttt{[Input]}, el programa debe imprimir \texttt{[Output]}.
+	
+	\vspace{0.5cm}
+	
+	\subsection*{Ejercicio 2: [Título del Ejercicio]}
+	[Descripción del problema que el estudiante debe resolver]. \\
+	
+	\textit{Nota: [Alguna restricción o pista para el estudiante].}
+	
+	% ==========================================
+	% Soluciones
+	% ==========================================
+	\newpage
+	\section{Soluciones Propuestas}
+	
+	Notar que las soluciones propuestas de cada ejercicio \textbf{no necesariamente} son las únicas o mejores. De la misma forma, en evaluaciones (certámenes, tareas) se evaluará la funcionalidad y el pensamiento lógico por sobre la implementación, por lo que se recomienda comentar para que el evaluador sepa qué es lo que se quiso decir.
+	
+	% --- EJEMPLO DE SOLUCIÓN ---
+	\subsection*{Solución Ejercicio 1}
+	\begin{solucion}
+		[Explicación breve de la lógica utilizada para llegar a la solución].
+		
+		\begin{lstlisting}
+			# Código de la solución esperada
+			print("Hola Mundo")
+		\end{lstlisting}
+	\end{solucion}
+	
+	\subsection*{Solución Ejercicio 2}
+	\begin{solucion}
+		[Explicación breve de la lógica utilizada para llegar a la solución].
+		
+		\begin{lstlisting}
+			# Código de la solución esperada
+			resultado = 2 + 2
+		\end{lstlisting}
+	\end{solucion}
+	
+	% --- Firma final ---
+	\vfill
+	\hfill \textcolor{gray}{SCN/1.0}
+	
+\end{document}
