@@ -1,0 +1,107 @@
+% Ayudantía X INF129 Introducción a la Programación
+% 2026-2 UTFSM SJ
+% Sergio Cárcamo Naranjo
+
+\documentclass[aspectratio=169, 11pt]{beamer}
+
+% Tema
+\usetheme{metropolis} 
+\usepackage{appendixnumberbeamer}
+
+% Tipografía (usar LuaLaTeX!!)
+\usepackage{fontspec}
+\setsansfont{Fira Sans}
+
+% Colores god
+\definecolor{AzulPrincipal}{HTML}{004B85}
+\definecolor{DoradoSecundario}{HTML}{FFB81C}
+\setbeamercolor{frametitle}{bg=AzulPrincipal, fg=white}
+\setbeamercolor{progress bar}{fg=DoradoSecundario, bg=AzulPrincipal}
+\setbeamercolor{alerted text}{fg=DoradoSecundario}
+
+% Paquete para código fuente (opción A: listings, opción B: minted)
+\usepackage{listings}
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{AzulPrincipal}\bfseries,
+	stringstyle=\color{DoradoSecundario},
+	commentstyle=\color{gray}\itshape,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4,
+	frame=single,
+	rulecolor=\color{lightgray},
+	literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{ñ}{{\~n}}1 {Ñ}{{\~N}}1
+}
+
+% Meta
+\title{Ayudantía X}
+\subtitle{INF129 Introducción a la Programación}
+\author{Sergio Cárcamo Naranjo}
+\institute{DI - Universidad Técnica Federico Santa María}
+\date{\today}
+
+% Logo portada
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.png}}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{frame}{Plan de hoy}
+		\setbeamertemplate{section in toc}[sections numbered]
+		\tableofcontents[hideallsubsections]
+	\end{frame}
+	
+	\section{Tema 1}
+	
+	\begin{frame}{Subtema 1}
+
+	\end{frame}
+	
+		\begin{frame}{Subtema 2}
+		
+	\end{frame}
+	
+	\section{Tema 2}
+	
+	\begin{frame}{Subtema 1}
+
+		\begin{itemize}
+			\item Ítem 1
+			\item Ítem 2
+		\end{itemize}
+
+	\end{frame}
+	
+	\begin{frame}{Subtema 2}
+
+	\end{frame}
+	
+	\begin{frame}[fragile]{Código}
+		Así se ven estos conceptos aplicados directamente en Python:
+		
+		\begin{lstlisting}[gobble=4]
+			# Asignando distintos tipos de datos a variables
+			edad = 19                   # int
+			promedio = 85.5             # float
+			nombre = "UTFSM"            # str
+			ramos = ["Intro", "Fisica"] # list
+			
+			# Podemos reasignar valores facilmente
+			edad = 20
+			
+			# Y podemos imprimir para verificar lo que guardamos
+			print(nombre)
+			print(ramos)
+		\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[standout]
+		¿Dudas hasta aquí?
+	\end{frame}
+	
+\end{document}

@@ -1,0 +1,184 @@
+% Ayudantía 2 INF129 Introducción a la Programación
+% 2026-2 UTFSM SJ
+% Sergio Cárcamo Naranjo
+
+\documentclass[aspectratio=169, 11pt]{beamer}
+
+% Tema
+\usetheme{metropolis} 
+\usepackage{appendixnumberbeamer}
+
+% Tipografía (usar LuaLaTeX!!)
+\usepackage{fontspec}
+\setsansfont{Fira Sans}
+
+% Colores god
+\definecolor{AzulPrincipal}{HTML}{004B85}
+\definecolor{DoradoSecundario}{HTML}{FFB81C}
+\setbeamercolor{frametitle}{bg=AzulPrincipal, fg=white}
+\setbeamercolor{progress bar}{fg=DoradoSecundario, bg=AzulPrincipal}
+\setbeamercolor{alerted text}{fg=DoradoSecundario}
+
+% Paquete para código fuente (opción A: listings, opción B: minted)
+\usepackage{listings}
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{AzulPrincipal}\bfseries,
+	stringstyle=\color{DoradoSecundario},
+	commentstyle=\color{gray}\itshape,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4,
+	frame=single,
+	rulecolor=\color{lightgray},
+	literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{ñ}{{\~n}}1 {Ñ}{{\~N}}1
+}
+
+% Meta
+\title{Ayudantía 2}
+\subtitle{INF129 Introducción a la Programación}
+\author{Sergio Cárcamo Naranjo}
+\institute{DI - Universidad Técnica Federico Santa María}
+\date{\today}
+
+% Logo portada
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.png}}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{frame}{Plan de hoy}
+		\setbeamertemplate{section in toc}[sections numbered]
+		\tableofcontents[hideallsubsections]
+	\end{frame}
+	
+	% ------------------------------------------------------------------------------------------------------------------------
+	
+	\section{Motivación}
+	
+	\begin{frame}{Motivación}
+		En la vida real no ejecutamos siempre la misma rutina de forma lineal; tomamos decisiones basadas en nuestro entorno y las condiciones actuales.
+		\begin{itemize}
+			\item \textit{Si} llueve, llevo paraguas.
+			\item \textit{Si} tengo saldo en la tarjeta, realizo la compra.
+		\end{itemize}
+		\vspace{0.3cm}
+		En programación ocurre lo mismo: necesitamos que nuestros algoritmos sean capaces de evaluar datos, reaccionar y tomar caminos distintos según la información que reciben.
+	\end{frame}
+	
+	% ------------------------------------------------------------------------------------------------------------------------
+	
+	\section{Decisiones (Control de Flujo)}
+	
+	\begin{frame}{El tipo de dato booleano}
+		Para que un programa pueda tomar decisiones, Python utiliza variables de tipo \textbf{booleano} (\texttt{bool}).
+		
+		\begin{itemize}
+			\item Son la representación digital de un estado lógico.
+			\item Solo pueden asumir dos valores: \texttt{True} (Verdadero) o \texttt{False} (Falso).
+		\end{itemize}
+		
+		\begin{alertblock}{Cuidado con la sintaxis!} 
+			\vspace{0.01cm}
+			En Python, la primera letra siempre debe ser mayúscula. Escribir \texttt{true}, \texttt{FALSE} o \texttt{TRUE} provocará un error.
+		\end{alertblock}
+	\end{frame}
+	
+	\begin{frame}[fragile]{El condicional if}
+		Usamos el \textbf{condicional if} para ejecutar un bloque de código \textbf{solo si} la condición evaluada es verdadera.
+		
+		\begin{lstlisting}[gobble=4]
+			llueve = True
+			if llueve:
+				print("Llevando el paraguas...")
+		\end{lstlisting}
+		
+		\begin{alertblock}{La Indentación es obligatoria}
+			\vspace{0.01cm}
+			En Python, el bloque de código que pertenece al \texttt{if} \textbf{debe} llevar una sangría (4 espacios o Tab). Si no la incluyes, el programa no compilará.
+		\end{alertblock}
+	\end{frame}
+	
+	\begin{frame}{Operadores relacionales}
+		Nos permiten comparar valores entre sí. Su resultado siempre será un valor booleano (\texttt{True} o \texttt{False}).
+		
+		\vspace{0.3cm}
+		\begin{itemize}
+			\item \texttt{==} : Igual a \alert{(¡No confundir con el = de asignación de variables!)}
+			\item \texttt{!=} : Distinto de
+			\item \texttt{>} : Mayor que
+			\item \texttt{<} : Menor que
+			\item \texttt{>=} : Mayor o igual que
+			\item \texttt{<=} : Menor o igual que
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Operadores lógicos}
+		Nos permiten unir o modificar múltiples expresiones booleanas en una sola decisión más compleja:
+		
+		\vspace{0.3cm}
+		\begin{itemize}
+			\item \textbf{\texttt{and}} : Será \texttt{True} \textbf{solo si todas} las condiciones evaluadas son verdaderas.
+			\item \textbf{\texttt{or}} : Será \texttt{True} si \textbf{al menos una} de las condiciones es verdadera.
+			\item \textbf{\texttt{not}} : Invierte el estado lógico. Transforma \texttt{True} en \texttt{False}, y viceversa.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Múltiples condiciones: elif y else}
+		¿Qué pasa si hay más de dos caminos posibles?
+		\begin{itemize}
+			\item \textbf{\texttt{elif}}: Se evalúa únicamente si la condición anterior fue falsa. \alert{Puedes usar una cantidad ilimitada de elif!}
+			\item \textbf{\texttt{else}}: Es el camino por defecto. Se ejecuta solo si \textbf{todas} las condiciones anteriores fallaron. Solo puede haber uno y va al final.
+		\end{itemize}
+		
+		\vspace{0.3cm}
+		\textbf{Tip:} Cuando combinen muchos operadores lógicos en estas condiciones, acostúmbrense a usar \textbf{paréntesis} para definir el orden de prioridad, igual que en matemáticas.
+	\end{frame}
+	
+	\begin{frame}[fragile]{Condiciones anidadas}
+		
+		Es simplemente colocar un \texttt{if} dentro del bloque de otro \texttt{if}. Requiere aplicar una doble indentación.
+		
+		\begin{lstlisting}[gobble=4]
+			if usuario_logeado == True:
+				if saldo_cuenta > 0:
+					print("Permitir transacción")
+		\end{lstlisting}
+		
+		\vspace{0.2cm}
+		Dependiendo del contexto, una condición anidada suele ser lógicamente equivalente a unir dos condiciones con un operador \texttt{and}:
+		
+		\begin{lstlisting}[gobble=4]
+			if (usuario_logeado == True) and (saldo_cuenta > 0):
+				print("Permitir transacción")
+		\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Ejemplo}
+		\begin{lstlisting}[gobble=4]
+			precio_juego = 29990
+			saldo_steam = float(input("Ingrese su saldo: "))
+			es_oferta_verano = True
+			
+			if es_oferta_verano:
+				precio_juego = precio_juego * 0.8  # 20% descuento
+			
+			if saldo_steam >= precio_juego:
+				saldo_steam = saldo_steam - precio_juego
+				print("Juego añadido a tu biblioteca!")
+				print("Nuevo saldo disponible:", saldo_steam)
+			else:
+				falta = precio_juego - saldo_steam
+				print("Saldo insuficiente. Te faltan:", falta)
+		\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[standout]
+		¿Dudas hasta aquí?
+	\end{frame}
+	
+\end{document}
