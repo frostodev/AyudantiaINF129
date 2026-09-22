@@ -1,0 +1,226 @@
+% Ayudantía 6 INF129 Introducción a la Programación
+% 2026-2 UTFSM SJ
+% Sergio Cárcamo Naranjo
+
+\documentclass[aspectratio=169, 11pt]{beamer}
+
+% Tema
+\usetheme{metropolis} 
+\usepackage{appendixnumberbeamer}
+
+% Tipografía (usar LuaLaTeX!!)
+\usepackage{fontspec}
+\setsansfont{Fira Sans}
+
+% Colores god
+\definecolor{AzulPrincipal}{HTML}{004B85}
+\definecolor{DoradoSecundario}{HTML}{FFB81C}
+\setbeamercolor{frametitle}{bg=AzulPrincipal, fg=white}
+\setbeamercolor{progress bar}{fg=DoradoSecundario, bg=AzulPrincipal}
+\setbeamercolor{alerted text}{fg=DoradoSecundario}
+
+% Paquete para código fuente (opción A: listings, opción B: minted)
+\usepackage{listings}
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{AzulPrincipal}\bfseries,
+	stringstyle=\color{DoradoSecundario},
+	commentstyle=\color{gray}\itshape,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4,
+	frame=single,
+	rulecolor=\color{lightgray},
+	literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{ñ}{{\~n}}1 {Ñ}{{\~N}}1
+}
+
+% Meta
+\title{Ayudantía 6}
+\subtitle{INF129 Introducción a la Programación}
+\author{Sergio Cárcamo Naranjo}
+\institute{DI - Universidad Técnica Federico Santa María}
+\date{\today}
+
+% Logo portada
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.png}}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{frame}{Plan de hoy}
+		\setbeamertemplate{section in toc}[sections numbered]
+		\tableofcontents[hideallsubsections]
+	\end{frame}
+	
+	\section{Funciones}
+	
+	\begin{frame}{¿Qué es una función?}
+		\begin{itemize}
+			\item Una \textbf{función} es un bloque de código reutilizable que realiza una tarea específica.
+			\item Nos permite abstraer (ocultar detalles) y descomponer (dividir problemas grandes en más pequeños).
+			\item Actúa como una ``caja negra'': recibe entradas (parámetros), realiza cálculos, y entrega salidas (valor de retorno).
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Definición y Llamado}
+		Para definir una función en Python usamos la palabra clave \lstinline{def}.
+		
+		\begin{lstlisting}[gobble=3]
+			def saludar(nombre):
+				mensaje = "Hola " + nombre
+				return mensaje
+				
+			# Llamado a la función
+			saludo = saludar("Mundo")
+			print(saludo)
+		\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[fragile]{print() vs return}
+		\begin{itemize}
+			\item \lstinline{return}: Devuelve un valor que puede ser guardado en una variable o usado en otra expresión. La función termina su ejecución al retornar.
+			\item \lstinline{print}: Muestra texto en la pantalla, pero \textbf{no} devuelve ningún valor.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Alcance de Variables (Scope)}
+		Las variables creadas \textbf{dentro} de una función solo existen dentro de ella (ámbito local). No pueden ser usadas desde afuera.
+		
+		\begin{lstlisting}[gobble=3]
+			def mi_funcion():
+				variable_local = 10
+				print(variable_local)
+				
+			mi_funcion()
+			# Esto tira error porque no existe fuera:
+			# print(variable_local) 
+		\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Orden de los Parámetros}
+		Al llamar a una función, los argumentos se asignan a los parámetros en el \textbf{mismo orden} en que fueron definidos en su firma.
+		
+		\begin{lstlisting}[gobble=3]
+			def restar(a, b):
+				return a - b
+				
+			# a = 10 y b = 3
+			print(restar(10, 3)) # Imprime 7
+			
+			# El orden importa mucho:
+			print(restar(3, 10)) # Imprime -7
+		\end{lstlisting}
+	\end{frame}
+	
+	\section{Ejemplos}
+	
+	\begin{frame}[fragile]{Ejemplo 1: Conversión de Temperaturas}
+		Queremos una función que convierta grados Celsius a Fahrenheit.
+		
+		\begin{lstlisting}[gobble=3]
+			def celsius_a_fahrenheit(c):
+				f = (c * 9/5) + 32
+				return f
+				
+			temp_c = 25
+			temp_f = celsius_a_fahrenheit(temp_c)
+			print(temp_c, "grados Celsius son", temp_f, "F°.")
+		\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Ejemplo 2: Número Primo}
+		Una función que verifique si un número entero mayor a 1 es primo.
+		
+		\begin{lstlisting}[gobble=3]
+			def es_primo(n):
+				for i in range(2, n):
+					if n % i == 0:
+						return False
+				return True
+				
+			print("¿Es 7 primo?", es_primo(7))
+			print("¿Es 10 primo?", es_primo(10))
+		\end{lstlisting}
+	\end{frame}
+	
+	\section{Recursividad}
+	
+	\begin{frame}{¿Qué es la Recursividad?}
+		\begin{itemize}
+			\item La \textbf{recursividad} es una técnica donde una función se llama \textbf{a sí misma} para resolver un problema.
+			\item Todo problema recursivo debe tener:
+			\begin{enumerate}
+				\item \textbf{Caso base:} Una condición de término simple que no requiere recursión (condición de parada).
+				\item \textbf{Paso recursivo:} La función se llama a sí misma con un problema más pequeño, acercándose al caso base.
+			\end{enumerate}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Ejemplo Recursivo: Factorial}
+		El factorial de $n$ se define como $n! = n \times (n-1)!$, y $0! = 1$.
+		
+		\begin{lstlisting}[gobble=3]
+			def factorial_recursivo(n):
+				# Caso base
+				if n == 0 or n == 1:
+					return 1
+				# Paso recursivo
+				else:
+					return n * factorial_recursivo(n - 1)
+					
+			print("El factorial de 5 es:", factorial_recursivo(5))
+		\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Ejemplo Recursivo: Fibonacci}
+		Sucesión de Fibonacci: $F(0)=0, F(1)=1$, y $F(n) = F(n-1) + F(n-2)$.
+		
+		\begin{lstlisting}[gobble=3]
+			def fibonacci(n):
+				# Casos base
+				if n == 0:
+					return 0
+				elif n == 1:
+					return 1
+				# Paso recursivo
+				else:
+					return fibonacci(n - 1) + fibonacci(n - 2)
+					
+			print("El término 6 de Fibonacci es:", fibonacci(6))
+		\end{lstlisting}
+	\end{frame}
+	
+	\begin{frame}[standout]
+		¿Dudas hasta aquí?
+	\end{frame}
+	
+	\section{Problemas}
+	
+	\begin{frame}{Problema 1: Números Perfectos}
+		Un número es \textbf{perfecto} si la suma de sus divisores propios (excluyéndose a sí mismo) es igual al número.
+		
+		Escriba \textbf{dos} funciones para resolver este problema:
+		\begin{enumerate}
+			\item \lstinline{suma_divisores(n)}: Que calcule y retorne la suma de los divisores propios de $n$.
+			\item \lstinline{es_perfecto(n)}: Que reciba un número, utilice la función anterior y retorne \lstinline{True} si es perfecto, o \lstinline{False} en caso contrario.
+		\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}{Problema 2: MCD Recursivo}
+		Ya conocemos el algoritmo de Euclides para calcular el Máximo Común Divisor (MCD) utilizando ciclos (\lstinline{while}).
+		
+		Escriba la función \lstinline{mcd(a, b)} pero utilizando \textbf{recursividad}.
+		
+		\vspace{0.5cm}
+		Recuerde la definición del algoritmo:
+		\begin{itemize}
+			\item \textbf{Caso base:} El MCD entre $a$ y $0$ es $a$.
+			\item \textbf{Paso recursivo:} El MCD entre $a$ y $b$ es igual al MCD entre $b$ y el resto de $a$ dividido en $b$ ($a \% b$).
+		\end{itemize}
+	\end{frame}
+	
+\end{document}
